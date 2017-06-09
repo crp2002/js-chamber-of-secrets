@@ -2,6 +2,8 @@ import fetch from 'isomorphic-fetch';
 import React, { Component } from 'react';
 import Mode from './Mode';
 import Mode2 from './Mode2';
+import Header from './Header';
+
 
 class App extends Component {
   constructor(props) {
@@ -22,6 +24,7 @@ class App extends Component {
   render() {
     return (
       <div>
+        <Header />
         <div id="gameBoard">Welcome!</div>
           <div>
             <Mode goToMode1={this.state.goToMode1}/>

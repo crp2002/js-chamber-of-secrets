@@ -19,13 +19,12 @@ class AppTo1 extends Component{
 
     getForm2Value(e){
         let selection2 = e.target.value;
-       if(selection2 === "number") this.setState({question2: true});
-       else this.setState({question2: false});
+        if(selection2 === "number") this.setState({question2: true});
+        else this.setState({question2: false});
     }
 
     render(){
-
-        let message1, message2;
+        let message1, message2, nextLevel;
         if(this.state.question1 === true){
             message1 = (<em>that is CORRECT!!</em>);
         }
@@ -37,6 +36,9 @@ class AppTo1 extends Component{
         }
         if(this.state.question2 === false){
             message2 = (<em>incorrect, try again...</em>);
+        }
+        if(this.state.question1 === true && this.state.question2 === true){
+            nextLevel = (<button type="button"><a href="/Mode2">Continue</a></button>)
         }
 
         return(
@@ -60,33 +62,11 @@ class AppTo1 extends Component{
                 <input name="option2" type="radio" value="null" /> null <br></br>
                 {message2}
             </form>
+            {nextLevel}
          </div> 
         );
     }
-
-    /*render(){
-        return (
-            <div>
-            <Challenge questions={this.state.questions}/>
-            <form>
-                <input type="text"></input>
-                <input type="submit" value="Submit"></input>
-            </form>    
-            </div>
-        )
-    }*/
 }
 
-class Challenge extends Component{
-    constructor(props){
-        super(props);
-    }
-    render(){
-        return(
-            <div>
-                <p>{this.props.questions[0]}</p>
-            </div>
-        )
-    }
-}
+
 export default AppTo1;
